@@ -36,7 +36,7 @@ func RenderTemplate(w http.ResponseWriter,
 func makeTemplateCache(t string) error {
 
 	specificTemplate := path.Join(helper.GetTemplatesDirectory(), t)
-	baseTemplate := path.Join(helper.GetTemplatesDirectory(), "base.layout.tmpl")
+	baseTemplate := path.Join(helper.GetTemplatesDirectory(), "base.layout.html")
 
 	fmt.Println(specificTemplate)
 

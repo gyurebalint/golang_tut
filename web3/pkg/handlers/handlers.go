@@ -29,18 +29,38 @@ func (m *Repository) HomeHandler(w http.ResponseWriter,
 	m.App.Session.Put(r.Context(),
 		"userid", "gyurebalint")
 
-	render.RenderTemplate(w, "home.page.tmpl",
+	render.RenderTemplate(w, "home.page.html",
 		&models.PageData{})
 }
 
 func (m *Repository) AboutHandler(w http.ResponseWriter,
 	r *http.Request) {
+
 	strMap := make(map[string]string)
-	strMap["title"] = "About us"
-	strMap["intro"] = "This page is where we talk about ourselves. And we love talking about ourselves"
 
-	userid := m.App.Session.GetString(r.Context(), "userid")
-	strMap["userid"] = userid
+	render.RenderTemplate(w, "about.page.html", &models.PageData{StrMap: strMap})
+}
 
-	render.RenderTemplate(w, "about.page.tmpl", &models.PageData{StrMap: strMap})
+func (m *Repository) LoginHandler(w http.ResponseWriter,
+	r *http.Request) {
+
+	strMap := make(map[string]string)
+
+	render.RenderTemplate(w, "login.page.html", &models.PageData{StrMap: strMap})
+}
+
+func (m *Repository) MakePostHandler(w http.ResponseWriter,
+	r *http.Request) {
+
+	strMap := make(map[string]string)
+
+	render.RenderTemplate(w, "make-post.page.html", &models.PageData{StrMap: strMap})
+}
+
+func (m *Repository) PageHandler(w http.ResponseWriter,
+	r *http.Request) {
+
+	strMap := make(map[string]string)
+
+	render.RenderTemplate(w, "page.page.html", &models.PageData{StrMap: strMap})
 }
